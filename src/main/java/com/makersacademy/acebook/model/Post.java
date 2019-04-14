@@ -7,6 +7,9 @@ import javax.persistence.Table;
 import javax.persistence.GenerationType;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -18,13 +21,17 @@ public class Post {
     private Long id;
     private String content;
     private String title;
+    @CreationTimestamp
+    private Timestamp time;
 
 
     private Post() {}
 
     public Post(String content, String title) {
+        this.id = this.getId();
         this.content = content;
         this.title = title;
+        this.time = this.getTime();
     }
 
     public String getContent() {
