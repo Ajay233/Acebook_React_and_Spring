@@ -4,9 +4,11 @@ const Post = (props) => {
 	return (
 		<div className='post-main'>
 			<div className='post-content'>
-				<span>{props.post.title}</span>
+				<div className='post-title'>
+					<span className='title'>{props.post.title}</span>
+					<span className='time'>Posted at:{props.post.time}</span>
+				</div>
 				<span>{props.post.content}</span>
-				<span>{props.post.time}</span>
 			</div>
 		</div>
 	)
