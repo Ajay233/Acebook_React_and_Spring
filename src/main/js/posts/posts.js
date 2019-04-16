@@ -11,7 +11,7 @@ class Posts extends React.Component {
 		return (
       <article className='posts-main'>
         <h1 className='posts-title'>
-          Acebook Posts
+          Welcome to Acebook Posts
         </h1>
   			<div className='posts-items'>
   				{this.getPosts()}

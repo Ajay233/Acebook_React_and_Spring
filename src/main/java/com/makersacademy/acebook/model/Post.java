@@ -28,10 +28,8 @@ public class Post {
     private Post() {}
 
     public Post(String content, String title) {
-        this.id = this.getId();
         this.content = content;
         this.title = title;
-        this.time = this.getTime();
     }
 
     public String getContent() {
