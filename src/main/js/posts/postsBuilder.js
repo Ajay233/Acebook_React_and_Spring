@@ -8,6 +8,8 @@ class PostsBuilder extends React.Component {
     this.state = {posts: []};
   }
 
+  // componentDidMount is a react lifecycle method
+  // This executes once when this component is initialy rendered
   componentDidMount() {
     client({method: 'GET', path: '/api/posts'}).then(response => {
       this.setState({posts: response.entity._embedded.posts});

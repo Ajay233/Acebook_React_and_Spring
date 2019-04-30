@@ -8,8 +8,11 @@ class App extends React.Component {
 
   render() {
     return (
-        <CreatePost />,
-      <PostsBuilder />
+        <div>
+            <CreatePost />
+            <PostsBuilder />
+        </div>
+
     )
   }
 }

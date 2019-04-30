@@ -20,7 +20,7 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "createPost", method = RequestMethod.POST)
+	@RequestMapping(value = "api/createPost", method = RequestMethod.POST)
     public String createPost(@RequestParam("title") String title,
                              @RequestParam("content") String content){
         Post post = new Post(title, content);

@@ -10,7 +10,7 @@ const Post = (props) => {
 			<div className='post-content'>
 				<span>{props.post.content}</span>
 			</div>
-			{console.log(props.post)}
+
 		</div>
 	)
 }
