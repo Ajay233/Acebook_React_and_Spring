@@ -1,4 +1,5 @@
 import React from 'react';
+import DeletePost from './deletePost'
 
 const Post = (props) => {
 	return (
@@ -10,7 +11,9 @@ const Post = (props) => {
 			<div className='post-content'>
 				<span>{props.post.content}</span>
 			</div>
-
+			<div>
+				<DeletePost postID={props.post}/>
+			</div>
 		</div>
 	)
 }
