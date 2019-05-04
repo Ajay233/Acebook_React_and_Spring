@@ -22,6 +22,7 @@ class CreatePost extends React.Component {
         });
         this.refs.content.value="";
         this.refs.title.value="";
+        window.location.reload();
     }
 
 

@@ -14,6 +14,7 @@ class DeletePost extends React.Component {
         let endOfPath = str.search(regex);
         let id = str.substr(endOfPath);
         client({method: 'DELETE', path: '/api/posts/' + id})
+        window.location.reload();
     }
 
     render() {

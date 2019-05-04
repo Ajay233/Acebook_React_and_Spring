@@ -26,7 +26,7 @@ class UpdatePost extends React.Component {
         });
         this.refs.content.value="";
         this.refs.title.value="";
-        window.location = "#";
+        window.location.reload();
     }
 
 
