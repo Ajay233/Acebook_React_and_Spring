@@ -28,13 +28,20 @@ class CreatePost extends React.Component {
     render() {
         return(
             <div>
+                <div>
+                    <h1>Create your post below</h1>
+                </div>
                 <form onSubmit={this.handleSubmit}>
+                    <div>
                     <label> Title:
                         <input ref="title" id="title" name="title" type="text" />
                     </label>
+                    </div>
+                    <div>
                     <label> Content:
                         <input ref="content" id="content" name="content" type="text" />
                     </label>
+                    </div>
                     <input type="submit" name="Submit Post"/>
                 </form>
             </div>
