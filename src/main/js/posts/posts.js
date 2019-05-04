@@ -1,9 +1,11 @@
 import React from 'react';
 import Post from './post'
+import CreatePost from '../forms/createPost'
 
 class Posts extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {show: false}
     this.getPosts = this.getPosts.bind(this);
   }
 
@@ -13,6 +15,7 @@ class Posts extends React.Component {
         <h1 className='posts-title'>
           Welcome to Acebook Posts
         </h1>
+            <CreatePost/>
   			<div className='posts-items'>
   				{this.getPosts()}
   			</div>

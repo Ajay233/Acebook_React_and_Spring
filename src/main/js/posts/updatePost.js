@@ -1,16 +1,20 @@
 import React from 'react'
-const client = require('../client');
 
-class CreatePost extends React.Component {
+
+class UpdatePost extends React.Component {
     constructor(props){
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
+        const regex = /(?<=posts\/).+/;
+        let str = this.props.postID._links.self.href;
+        let endOfPath = str.search(regex);
+        let id = str.substr(endOfPath);
         e.preventDefault();
-        fetch('/api/posts', {
-            method: 'POST',
+        fetch('/api/posts/' + id, {
+            method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -22,24 +26,30 @@ class CreatePost extends React.Component {
         });
         this.refs.content.value="";
         this.refs.title.value="";
+        window.location = "#";
     }
 
 
     render() {
         return(
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <div className="modal-header">
+                    <h1>Update your post below</h1>
+                </div>
+                <form className="modal-body" onSubmit={this.handleSubmit}>
                     <label> Title:
                         <input ref="title" id="title" name="title" type="text" />
                     </label>
                     <label> Content:
                         <input ref="content" id="content" name="content" type="text" />
                     </label>
-                    <input type="submit" name="Submit Post"/>
+                    <hr/>
+                    <input className="button" type="submit"/>
                 </form>
             </div>
-        );
+        )
     }
+
 }
 
-export default CreatePost;
+export default UpdatePost;

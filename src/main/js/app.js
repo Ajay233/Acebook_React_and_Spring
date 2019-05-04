@@ -2,14 +2,18 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 import PostsBuilder from './posts/postsBuilder'
-import CreatePost from './forms/createPost'
 
 class App extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {showModal: false}
+    }
+
+
 
   render() {
     return (
         <div>
-            <CreatePost />
             <PostsBuilder />
         </div>
 
