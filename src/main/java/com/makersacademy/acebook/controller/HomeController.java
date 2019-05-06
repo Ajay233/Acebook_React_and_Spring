@@ -4,7 +4,6 @@ import com.makersacademy.acebook.model.Post;
 import com.makersacademy.acebook.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +17,16 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String index() {
 		return "index";
+	}
+
+	@RequestMapping(value = "/login")
+	public String login(){
+		return "login";
+	}
+
+	@RequestMapping(value = "/logout-success")
+	public String logout(){
+		return "logout";
 	}
 
 	@RequestMapping(value = "api/createPost", method = RequestMethod.POST)
