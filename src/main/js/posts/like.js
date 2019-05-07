@@ -5,7 +5,7 @@ const client = require('../client');
 class Like extends React.Component{
     constructor(props){
         super(props)
-        this.state = {likes: [], updated: false}
+        this.state = {likes: [], count: 0}
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -17,23 +17,10 @@ class Like extends React.Component{
                     likesForThisPost.push(response.entity._embedded.likes[i])
                 }
             }
-            this.setState({likes: likesForThisPost, updated: false});
+            this.setState({likes: likesForThisPost, count: likesForThisPost.length});
         });
     }
-
-    componentDidUpdate() {
-        client({method: 'GET', path: '/api/likes'}).then(response => {
-            let updatedLikesForThisPost = [];
-            for(let x = 0; x < response.entity._embedded.likes.length; x++){
-                if (response.entity._embedded.likes[x].postId == ExtractId(this.props.post._links.self.href)){
-                    updatedLikesForThisPost.push(response.entity._embedded.likes[x])
-                }
-            }
-            this.setState({likes: updatedLikesForThisPost, updated: false});
-        });
-    }
-
-    // Extract the post id from the end of the href
+    
     handleClick(e) {
         e.preventDefault();
         fetch('/api/likes', {
@@ -49,12 +36,12 @@ class Like extends React.Component{
                 surname: ""
             })
         });
-        this.setState({ updated: true });
+        this.setState({ count: this.state.count + 1 });
     }
 
     render() {
         return(
-            <span><button onClick={this.handleClick}>Like</button> {this.state.likes.length}</span>
+            <span><button onClick={this.handleClick}>Like</button> {this.state.count}</span>
         )
     }
 
