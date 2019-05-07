@@ -20,7 +20,7 @@ class Like extends React.Component{
             this.setState({likes: likesForThisPost, count: likesForThisPost.length});
         });
     }
-    
+
     handleClick(e) {
         e.preventDefault();
         fetch('/api/likes', {
