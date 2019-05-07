@@ -2,6 +2,7 @@ import React from 'react';
 import DeletePost from './deletePost'
 import UpdatePost from './updatePost'
 import Modal from '../modal/modal'
+import Like from './like'
 
 class Post extends React.Component {
 	constructor(props) {
@@ -38,6 +39,7 @@ class Post extends React.Component {
 					<Modal show={this.state.show} handleClose={this.closeModal}>
 						<UpdatePost postID={this.props.post}/>
 					</Modal>
+					<Like post={this.props.post}/>
 				</div>
 			</div>
 		)
