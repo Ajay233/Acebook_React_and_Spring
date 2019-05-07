@@ -1,4 +1,5 @@
 import React from 'react'
+import ExtractId from '../utils/extractId'
 
 
 class UpdatePost extends React.Component {
@@ -8,12 +9,9 @@ class UpdatePost extends React.Component {
     }
 
     handleSubmit(e) {
-        const regex = /(?<=posts\/).+/;
-        let str = this.props.postID._links.self.href;
-        let endOfPath = str.search(regex);
-        let id = str.substr(endOfPath);
+        let postHref = this.props.postID._links.self.href;
         e.preventDefault();
-        fetch('/api/posts/' + id, {
+        fetch('/api/posts/' + ExtractId(postHref), {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',

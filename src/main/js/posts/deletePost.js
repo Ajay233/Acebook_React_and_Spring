@@ -1,4 +1,5 @@
 import React from 'react'
+import ExtractId from '../utils/extractId'
 const client = require('../client');
 
 
@@ -9,11 +10,8 @@ class DeletePost extends React.Component {
     }
 
     handleClick(props) {
-        const regex = /(?<=posts\/).+/;
-        let str = this.props.postID._links.self.href;
-        let endOfPath = str.search(regex);
-        let id = str.substr(endOfPath);
-        client({method: 'DELETE', path: '/api/posts/' + id})
+        let postHref = this.props.postID._links.self.href;
+        client({method: 'DELETE', path: '/api/posts/' + ExtractId(postHref)})
         window.location.reload();
     }
 

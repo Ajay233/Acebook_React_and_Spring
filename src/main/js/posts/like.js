@@ -1,4 +1,5 @@
 import React from 'react'
+import ExtractId from '../utils/extractId'
 const client = require('../client');
 
 class Like extends React.Component{
@@ -8,19 +9,11 @@ class Like extends React.Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
-    extractId(href){
-        const regex = /(?<=posts\/).+/;
-        let str = href;
-        let endOfPath = str.search(regex);
-        let id = str.substr(endOfPath);
-        return id
-    }
-
     componentDidMount() {
         client({method: 'GET', path: '/api/likes'}).then(response => {
             let likesForThisPost = [];
             for(let i = 0; i < response.entity._embedded.likes.length; i++){
-                if (response.entity._embedded.likes[i].postId == this.extractId(this.props.post._links.self.href)){
+                if (response.entity._embedded.likes[i].postId == ExtractId(this.props.post._links.self.href)){
                     likesForThisPost.push(response.entity._embedded.likes[i])
                 }
             }
@@ -32,7 +25,7 @@ class Like extends React.Component{
         client({method: 'GET', path: '/api/likes'}).then(response => {
             let updatedLikesForThisPost = [];
             for(let x = 0; x < response.entity._embedded.likes.length; x++){
-                if (response.entity._embedded.likes[x].postId == this.extractId(this.props.post._links.self.href)){
+                if (response.entity._embedded.likes[x].postId == ExtractId(this.props.post._links.self.href)){
                     updatedLikesForThisPost.push(response.entity._embedded.likes[x])
                 }
             }
@@ -50,7 +43,7 @@ class Like extends React.Component{
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                postId: this.extractId(this.props.post._links.self.href),
+                postId: ExtractId(this.props.post._links.self.href),
                 userId: "",
                 forename: "",
                 surname: ""
