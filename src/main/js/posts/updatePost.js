@@ -35,12 +35,16 @@ class UpdatePost extends React.Component {
                     <h1>Update your post below</h1>
                 </div>
                 <form className="modal-body" onSubmit={this.handleSubmit}>
-                    <label> Title:
-                        <input ref="title" id="title" name="title" type="text" />
-                    </label>
-                    <label> Content:
-                        <input ref="content" id="content" name="content" type="text" />
-                    </label>
+                    <div>
+                        <label> Title:
+                            <input className="field" ref="title" id="title" name="title" type="text" />
+                        </label>
+                    </div>
+                    <div>
+                        <label> Content:
+                            <input className="field" ref="content" id="content" name="content" type="text" />
+                        </label>
+                    </div>
                     <hr/>
                     <input className="button" type="submit"/>
                 </form>

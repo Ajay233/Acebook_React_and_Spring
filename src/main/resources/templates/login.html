@@ -3,20 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body {
+            background-image: url("https://images.wallpaperscraft.com/image/neon_light_circles_83499_1920x1080.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: "Helvetica Neue";
+        }
+        .button {
+            padding: 12px 24px;
+            font-size: 12px;
+            color: white;
+            background-color: red;
+            border-radius: 8px;
+            margin: 10px 10px 10px 10px;
+            width: 90%;
+        }
+        .field {
+            padding: 12px 24px;
+            font-size: 12px;
+            border-radius: 8px;
+            width: 90%;
+            margin: 10px 10px 10px 5px;
+            float: right;
+        }
+        #container {
+            display: block;
+            float: right;
+            width: 30%;
+        }
+        h1 {
+            color: white;
+        }
+        label {
+            color: white;
+        }
+        #title {
+            margin-top: 30px;
+            margin-left: 50px;
+        }
+    </style>
 </head>
 <body>
     <div>
-        <h1>Login</h1>
-
+       <h1 id="title">Welcome to Acebook</h1>
+        <div id="container">
+            <center>
+                <h1>Login</h1>
+            </center>
         <form action="login" method="POST">
-            <label>Username:
-                <input type="text" name="username" value=""/>
+            <div>
+            <label >Username:
+                <input class="field" type="text" name="username" value=""/>
             </label>
+            </div>
+            <div>
             <label>Password:
-                <input type="text" name="password" />
+                <input class="field" type="text" name="password" />
             </label>
-            <input type="submit" name="submit" value="submit" />
+            </div>
+            <input class="button" type="submit" name="submit" value="submit" />
         </form>
+        </div>
     </div>
 </body>
 </html>

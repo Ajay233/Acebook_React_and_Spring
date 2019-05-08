@@ -41,7 +41,7 @@ class Like extends React.Component{
 
     render() {
         return(
-            <span><button onClick={this.handleClick}>Like</button> {this.state.count}</span>
+            <span><button className="button" onClick={this.handleClick}><i className="far fa-thumbs-up"></i> Like</button> {this.state.count}</span>
         )
     }
 

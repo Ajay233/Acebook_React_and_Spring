@@ -29,22 +29,24 @@ class CreatePost extends React.Component {
     render() {
         return(
             <div>
-                <div>
+                <div className="modal-header">
                     <h1>Create your post below</h1>
                 </div>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label> Title:
-                            <input ref="title" id="title" name="title" type="text" />
-                        </label>
-                    </div>
-                    <div>
-                        <label> Content:
-                            <input ref="content" id="content" name="content" type="text" />
-                        </label>
-                    </div>
-                    <input type="submit" name="Submit Post"/>
-                </form>
+                <div className="modal-body">
+                    <form onSubmit={this.handleSubmit}>
+                        <div>
+                            <label> Title:
+                                <input className="field" ref="title" id="title" name="title" type="text" />
+                            </label>
+                        </div>
+                        <div>
+                            <label> Content:
+                                <input className="field" ref="content" id="content" name="content" type="text" />
+                           </label>
+                        </div>
+                        <input className="button" type="submit" name="Submit Post"/>
+                    </form>
+                </div>
             </div>
         );
     }

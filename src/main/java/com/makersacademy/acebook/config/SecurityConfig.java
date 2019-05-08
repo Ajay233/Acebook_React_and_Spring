@@ -33,7 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/login").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/comments").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

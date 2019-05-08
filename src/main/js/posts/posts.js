@@ -27,7 +27,7 @@ class Posts extends React.Component {
         <h1 className='posts-title'>
           Welcome to Acebook Posts
         </h1>
-          <button onClick={this.showModal}>Create a Post</button>
+          <button className="button" onClick={this.showModal}>Create a Post</button>
           <Modal show={this.state.show} handleClose={this.closeModal}>
               <CreatePost/>
           </Modal>
