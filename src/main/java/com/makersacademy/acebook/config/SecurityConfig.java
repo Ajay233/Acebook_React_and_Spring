@@ -3,6 +3,7 @@ package com.makersacademy.acebook.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/comments").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
