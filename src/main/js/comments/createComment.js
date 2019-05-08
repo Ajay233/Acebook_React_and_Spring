@@ -22,6 +22,7 @@ class CreateComment extends React.Component {
                 comment: this.refs.content.value,
             })
         });
+        this.props.refresh;
     }
 
     render() {

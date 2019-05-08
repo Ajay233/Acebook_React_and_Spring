@@ -22,7 +22,7 @@ class CommentsList extends React.Component {
                     {this.getComments()}
                 </div>
                 <div>
-                    <CreateComment postId={this.props.postId}/>
+                    <CreateComment refresh={this.props.refresh} postId={this.props.postId}/>
                 </div>
                 </div>
             </div>

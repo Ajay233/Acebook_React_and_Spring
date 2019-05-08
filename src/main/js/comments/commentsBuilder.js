@@ -6,7 +6,8 @@ const client = require('../client');
 class CommentsBuilder extends React.Component {
     constructor(props){
         super(props)
-        this.state = {comments: []}
+        this.state = {comments: [], refresh: false}
+        this.triggerUpdate = this.triggerUpdate.bind(this);
     }
 
     componentDidMount() {
@@ -21,12 +22,28 @@ class CommentsBuilder extends React.Component {
         })
     }
 
+    componentDidUpdate() {
+        client({method: 'GET', path: '/api/comments'}).then(response => {
+            let filteredComments = [];
+            for(let i = 0; i < response.entity._embedded.comments.length; i++){
+                if(response.entity._embedded.comments[i].postid == ExtractId(this.props.post._links.self.href)){
+                    filteredComments.push(response.entity._embedded.comments[i])
+                }
+            }
+            this.setState({comments: filteredComments, refresh: false});
+        })
+    }
+
+    triggerUpdate(){
+        this.setState({refresh: true})
+    }
+
 
     render() {
         return(
             <CommentsList
                 postId={ExtractId(this.props.post._links.self.href)}
-                comments={this.state.comments}/>
+                comments={this.state.comments} refresh={this.triggerUpdate}/>
         )
     }
 }
