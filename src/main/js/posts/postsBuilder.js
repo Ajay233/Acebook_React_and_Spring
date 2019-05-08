@@ -5,7 +5,8 @@ const client = require('../client');
 class PostsBuilder extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {posts: []};
+    this.state = {posts: [], update: false};
+    this.triggerupdate = this.triggerUpdate.bind(this);
   }
 
   // componentDidMount is a react lifecycle method
@@ -16,9 +17,19 @@ class PostsBuilder extends React.Component {
     });
   }
 
-	render() {
+  componentDidUpdate() {
+      client({method: 'GET', path: '/api/posts'}).then(response => {
+          this.setState({posts: response.entity._embedded.posts, update: false});
+      });
+  }
+
+  triggerUpdate(){
+      this.setState({update: true})
+  }
+
+    render() {
 		return (
-      <Posts posts={this.state.posts}/>
+      <Posts update={this.triggerUpdate} posts={this.state.posts}/>
 		)
 	}
 }

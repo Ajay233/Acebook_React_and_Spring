@@ -29,7 +29,7 @@ class Posts extends React.Component {
         </h1>
           <button className="button" onClick={this.showModal}>Create a Post</button>
           <Modal show={this.state.show} handleClose={this.closeModal}>
-              <CreatePost/>
+              <CreatePost update={this.props.update}/>
           </Modal>
   			<div className='posts-items'>
   				{this.getPosts()}
@@ -40,7 +40,7 @@ class Posts extends React.Component {
 
   getPosts() {
     return this.props.posts.map(post =>
-			<Post key={post._links.self.href} post={post}/>
+			<Post key={post._links.self.href} post={post} update={this.props.update} />
 		);
   }
 }

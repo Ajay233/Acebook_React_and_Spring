@@ -39,10 +39,10 @@ class Post extends React.Component {
 					<Like post={this.props.post}/>
 					<button className="post-button" type="button" onClick={this.showModal}>Update Post</button>
 					<Modal show={this.state.show} handleClose={this.closeModal}>
-						<UpdatePost postID={this.props.post}/>
+						<UpdatePost update={this.props.update} postID={this.props.post} />
 					</Modal>
 					<button className="post-button" type="button"><i className="far fa-comment-alt"></i> Comment</button>
-					<DeletePost postID={this.props.post}/>
+					<DeletePost update={this.props.update} postID={this.props.post}/>
 				</div>
 				<div>
 					<CommentsBuilder post={this.props.post}/>

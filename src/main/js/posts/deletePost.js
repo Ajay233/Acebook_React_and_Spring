@@ -12,7 +12,7 @@ class DeletePost extends React.Component {
     handleClick(props) {
         let postHref = this.props.postID._links.self.href;
         client({method: 'DELETE', path: '/api/posts/' + ExtractId(postHref)})
-        window.location.reload();
+        this.props.update;
     }
 
     render() {
