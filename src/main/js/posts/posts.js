@@ -3,6 +3,7 @@ import Post from './post'
 import CreatePost from '../forms/createPost'
 import Modal from '../modal/modal'
 
+
 class Posts extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +28,7 @@ class Posts extends React.Component {
         <h1 className='posts-title'>
           Welcome to Acebook Posts
         </h1>
+          <a href="/logout">Logout</a>
           <button className="button" onClick={this.showModal}>Create a Post</button>
           <Modal show={this.state.show} handleClose={this.closeModal}>
               <CreatePost update={this.props.update}/>
