@@ -14,14 +14,19 @@ class PostsBuilder extends React.Component {
   componentDidMount() {
     client({method: 'GET', path: '/api/posts'}).then(response => {
       this.setState({posts: response.entity._embedded.posts});
+    }).catch(e => {
+        console.log(e);
     });
   }
 
-  componentDidUpdate() {
-      client({method: 'GET', path: '/api/posts'}).then(response => {
-          this.setState({posts: response.entity._embedded.posts, update: false});
-      });
-  }
+  // Commented out because this was causing a memory issue due to repeated requests. TO BE REFACTORED
+  // componentDidUpdate() {
+  //     client({method: 'GET', path: '/api/posts'}).then(response => {
+  //         this.setState({posts: response.entity._embedded.posts, update: false});
+  //     }).catch(e => {
+  //         console.log(e);
+  //     });
+  // }
 
   triggerUpdate(){
       this.setState({update: true})

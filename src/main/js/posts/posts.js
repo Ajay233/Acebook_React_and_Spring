@@ -2,6 +2,7 @@ import React from 'react';
 import Post from './post'
 import CreatePost from '../forms/createPost'
 import Modal from '../modal/modal'
+import NavBar from '../navbar/navBar'
 
 
 class Posts extends React.Component {
@@ -25,11 +26,16 @@ class Posts extends React.Component {
 	render() {
 		return (
       <article className='posts-main'>
-        <h1 className='posts-title'>
-          Welcome to Acebook Posts
-        </h1>
-          <a href="/logout">Logout</a>
-          <button className="button" onClick={this.showModal}>Create a Post</button>
+          <NavBar handleClose={this.showModal}>
+              <li>
+              <button className="hidden-button" onClick={this.showModal}>Create a Post</button>
+              </li>
+          </NavBar>
+          <center>
+            <h1 className='posts-title'>
+            Welcome to Acebook Posts
+            </h1>
+          </center>
           <Modal show={this.state.show} handleClose={this.closeModal}>
               <CreatePost update={this.props.update}/>
           </Modal>

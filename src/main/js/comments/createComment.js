@@ -31,7 +31,12 @@ class CreateComment extends React.Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <label>Comment:
-                        <input className="comment-input" type="text" id="content" name="content" ref="content"/>
+                        <input className="comment-input"
+                               type="text"
+                               id="content"
+                               name="content"
+                               ref="content"
+                               placeholder="Add a comment..."/>
                     </label>
                     <button className="button" type="submit" name="Submit Post">Comment</button>
                 </form>

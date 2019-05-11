@@ -29,15 +29,15 @@ class Post extends React.Component {
 			<div className='post-main'>
 				<center>
 				<div className='post-title'>
-					<span className='title'>Title: {this.props.post.title}</span>
-					<span className='time'>Posted at: {this.props.post.time}</span>
+					<span className='title'><strong>Title:</strong> {this.props.post.title}</span>
+					<span className='time'><strong>Posted at:</strong> {this.props.post.time}</span>
 				</div>
 				<div className='post-content'>
 					<span>{this.props.post.content}</span>
 				</div>
 				<div>
 					<Like post={this.props.post}/>
-					<button className="post-button" type="button" onClick={this.showModal}>Update Post</button>
+					<button className="post-button" type="button" onClick={this.showModal}><i className="far fa-edit"></i> Update Post</button>
 					<Modal show={this.state.show} handleClose={this.closeModal}>
 						<UpdatePost update={this.props.update} postID={this.props.post} />
 					</Modal>

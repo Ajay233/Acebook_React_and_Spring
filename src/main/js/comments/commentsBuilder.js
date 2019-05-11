@@ -19,20 +19,25 @@ class CommentsBuilder extends React.Component {
                 }
             }
             this.setState({comments: filteredComments});
-        })
+        }).catch(e => {
+            console.log(e);
+        });
     }
 
-    componentDidUpdate() {
-        client({method: 'GET', path: '/api/comments'}).then(response => {
-            let filteredComments = [];
-            for(let i = 0; i < response.entity._embedded.comments.length; i++){
-                if(response.entity._embedded.comments[i].postid == ExtractId(this.props.post._links.self.href)){
-                    filteredComments.push(response.entity._embedded.comments[i])
-                }
-            }
-            this.setState({comments: filteredComments, refresh: false});
-        })
-    }
+    // Commented out because this was causing a memory issue due to repeated requests. TO BE REFACTORED
+    // componentDidUpdate() {
+    //     client({method: 'GET', path: '/api/comments'}).then(response => {
+    //         let filteredComments = [];
+    //         for(let i = 0; i < response.entity._embedded.comments.length; i++){
+    //             if(response.entity._embedded.comments[i].postid == ExtractId(this.props.post._links.self.href)){
+    //                 filteredComments.push(response.entity._embedded.comments[i])
+    //             }
+    //         }
+    //         this.setState({comments: filteredComments, refresh: false});
+    //     }).catch(e => {
+    //         console.log(e);
+    //     });
+    // }
 
     triggerUpdate(){
         this.setState({refresh: true})
@@ -43,7 +48,8 @@ class CommentsBuilder extends React.Component {
         return(
             <CommentsList
                 postId={ExtractId(this.props.post._links.self.href)}
-                comments={this.state.comments} refresh={this.triggerUpdate}/>
+                comments={this.state.comments}
+                refresh={this.triggerUpdate}/>
         )
     }
 }
