@@ -8,10 +8,12 @@ import CommentsBuilder from '../comments/commentsBuilder'
 class Post extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {show: false}
+		this.state = {show: false, showComments: false}
 
 		this.showModal = this.showModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+		// this.handleDrop = this.handleDrop.bind(this);
 	}
 
 	showModal(){
@@ -22,6 +24,24 @@ class Post extends React.Component {
 
 	closeModal(){
 		this.setState({show: false});
+	}
+
+	// handleDrop() {
+	// 	let content = document.getElementById("comments-box");
+	// 	if (content.style.maxHeight) {
+	// 		content.style.maxHeight = null;
+	// 	} else {
+	// 		content.style.maxHeight = content.scrollHeight + "px";
+	// 	}
+	// }
+
+	handleClick(){
+		if(this.state.showComments == false){
+			this.setState({showComments: true});
+		}else{
+			this.setState({showComments: false});
+		}
+		{console.log(this.state.showComments)}
 	}
 
 	render(){
@@ -37,15 +57,23 @@ class Post extends React.Component {
 				</div>
 				<div>
 					<Like post={this.props.post}/>
-					<button className="post-button" type="button" onClick={this.showModal}><i className="far fa-edit"></i> Update Post</button>
-					<Modal show={this.state.show} handleClose={this.closeModal}>
+					<button className="post-button"
+							type="button"
+							onClick={this.showModal}>
+						<i className="far fa-edit"></i> Update Post
+					</button>
+					<Modal show={this.state.show}
+						   handleClose={this.closeModal}>
 						<UpdatePost update={this.props.update} postID={this.props.post} />
 					</Modal>
-					<button className="post-button" type="button"><i className="far fa-comment-alt"></i> Comment</button>
+					<button className="post-button" type="button"
+							onClick={this.handleClick}>
+						<i className="far fa-comment-alt"></i> View Comments
+					</button>
 					<DeletePost update={this.props.update} postID={this.props.post}/>
 				</div>
 				<div>
-					<CommentsBuilder post={this.props.post}/>
+					<CommentsBuilder post={this.props.post} showComments={this.state.showComments} />
 				</div>
 				</center>
 			</div>

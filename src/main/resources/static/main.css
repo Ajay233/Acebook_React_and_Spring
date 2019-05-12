@@ -155,15 +155,25 @@ h1 {
     background-color: rgba(0, 0, 0, 0);
 }
 
-#comments-box {
-    border: 1px solid #999;
-    padding: 0.5rem;
+.comments-box {
+    /*border: 1px solid #999;*/
+    /*padding: 0.5rem;*/
     text-align: center;
-    margin-top: 0.5rem;
+    margin-top: 1.0rem;
     margin-bottom: 0.5rem;
     width: 95%;
     position: center;
     border-radius: 8px;
+    overflow: hidden;
+}
+
+.hidden {
+    max-height: 0;
+    transition: max-height 0.4s ease-in;
+}
+
+.expanded {
+    transition: max-height 0.4s;
 }
 
 .comment-input {

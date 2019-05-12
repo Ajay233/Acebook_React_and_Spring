@@ -15,9 +15,10 @@ class CommentsList extends React.Component {
     }
 
     render(){
+        const showHideClassName = this.props.show ? "comments-box expanded" : "comments-box hidden";
         return(
             <div>
-                <div id="comments-box">
+                <div className={showHideClassName}>
                 <div>
                     {this.getComments()}
                 </div>

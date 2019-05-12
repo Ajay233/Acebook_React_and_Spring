@@ -49,7 +49,8 @@ class CommentsBuilder extends React.Component {
             <CommentsList
                 postId={ExtractId(this.props.post._links.self.href)}
                 comments={this.state.comments}
-                refresh={this.triggerUpdate}/>
+                refresh={this.triggerUpdate}
+                show={this.props.showComments}/>
         )
     }
 }
