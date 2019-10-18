@@ -1,5 +1,7 @@
 # Acebook
 
+You can try out Acebook at: https://spring-react-acebook.herokuapp.com
+
 ## Planning
 
 To plan this project I have completed the following:
